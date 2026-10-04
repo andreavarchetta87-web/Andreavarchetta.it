@@ -387,7 +387,7 @@ Inserisci i tuoi dati per ricevere direttamente su WhatsApp ed Email gli aggiorn
 </div>
 </section>
 
-<!-- Segnalazioni e Proposte -->
+<!-- Segnalazioni e Proposte (COLLEGATO A WEB3FORMS) -->
 <section id="segnalazioni" class="py-20 bg-white">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="bg-slate-50 rounded-3xl shadow-xl border border-slate-200 p-8 sm:p-12">
@@ -397,61 +397,59 @@ Inserisci i tuoi dati per ricevere direttamente su WhatsApp ed Email gli aggiorn
 <p class="text-slate-600">Hai riscontrato un disservizio a Quarto, problemi relativi al territorio flegreo o hai un'idea per migliorare la nostra città? Compila il modulo.</p>
 </div>
 
-<form id="segnalazione-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-<div>
-<label class="block text-sm font-semibold text-slate-700 mb-2">Nome e Cognome *</label>
-<input type="text" id="nome" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Mario Rossi">
-</div>
-<div>
-<label class="block text-sm font-semibold text-slate-700 mb-2">Email di Contatto *</label>
-<input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="mario@email.it">
-</div>
-</div>
+<form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+  <!-- Chiave Web3Forms inserita correttamente -->
+  <input type="hidden" name="access_key" value="32b01f65-8f60-4f3c-9371-de780f2fc270">
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-<div>
-<label class="block text-sm font-semibold text-slate-700 mb-2">Telefono / WhatsApp</label>
-<input type="tel" id="telefono" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="081 0669769">
-</div>
-<div>
-<label class="block text-sm font-semibold text-slate-700 mb-2">Tipo di Richiesta *</label>
-<select id="tipo" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white">
-<option value="segnalazione">Segnalazione Disservizio / Problema</option>
-<option value="flegrei">Bradisismo / Sicurezza Territorio Campi Flegrei</option>
-<option value="proposta">Proposta di Miglioramento</option>
-<option value="sociale">Richiesta / Assistenza Servizi Sociali</option>
-<option value="altro">Altro / Informazioni</option>
-</select>
-</div>
-</div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Nome e Cognome *</label>
+      <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Mario Rossi">
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Email di Contatto *</label>
+      <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="mario@email.it">
+    </div>
+  </div>
 
-<div>
-<label class="block text-sm font-semibold text-slate-700 mb-2">Zona / Quartiere di Quarto</label>
-<input type="text" id="zona" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Es. Centro, Periferia, Corso Italia...">
-</div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Telefono / WhatsApp</label>
+      <input type="tel" name="telefono" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="081 0669769">
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Tipo di Richiesta *</label>
+      <select name="tipo" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white">
+        <option value="segnalazione">Segnalazione Disservizio / Problema</option>
+        <option value="flegrei">Bradisismo / Sicurezza Territorio Campi Flegrei</option>
+        <option value="proposta">Proposta di Miglioramento</option>
+        <option value="sociale">Richiesta / Assistenza Servizi Sociali</option>
+        <option value="altro">Altro / Informazioni</option>
+      </select>
+    </div>
+  </div>
 
-<div>
-<label class="block text-sm font-semibold text-slate-700 mb-2">Descrizione dettagliata *</label>
-<textarea id="messaggio" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Descrivi qui il problema o la tua proposta nel dettaglio..."></textarea>
-</div>
+  <div>
+    <label class="block text-sm font-semibold text-slate-700 mb-2">Zona / Quartiere di Quarto</label>
+    <input type="text" name="zona" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Es. Centro, Periferia, Corso Italia...">
+  </div>
 
-<div class="flex items-center space-x-3">
-<input type="checkbox" id="privacy" required class="w-5 h-5 text-brand-600 rounded border-slate-300 focus:ring-brand-500">
-<label for="privacy" class="text-xs text-slate-500">Autorizzo il trattamento dei miei dati personali ai sensi del GDPR per la gestione della richiesta.</label>
-</div>
+  <div>
+    <label class="block text-sm font-semibold text-slate-700 mb-2">Descrizione dettagliata *</label>
+    <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Descrivi qui il problema o la tua proposta nel dettaglio..."></textarea>
+  </div>
 
-<button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
-<i class="fa-solid fa-paper-plane"></i>
-<span>Invia Segnalazione</span>
-</button>
+  <div class="flex items-center space-x-3">
+    <input type="checkbox" id="privacy" required class="w-5 h-5 text-brand-600 rounded border-slate-300 focus:ring-brand-500">
+    <label for="privacy" class="text-xs text-slate-500">Autorizzo il trattamento dei miei dati personali ai sensi del GDPR per la gestione della richiesta.</label>
+  </div>
+
+  <button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+    <i class="fa-solid fa-paper-plane"></i>
+    <span>Invia Segnalazione</span>
+  </button>
 </form>
 
-<div id="form-success" class="hidden mt-6 p-6 bg-green-50 border border-green-200 text-green-800 rounded-2xl text-center space-y-2">
-<i class="fa-solid fa-circle-check text-3xl text-green-600"></i>
-<h3 class="font-bold text-lg">Richiesta inviata con successo!</h3>
-<p class="text-sm">Grazie per il tuo contributo. Andrea Varchetta ti risponderà al più presto.</p>
-</div>
 </div>
 </div>
 </section>
@@ -587,9 +585,9 @@ const nome = document.getElementById('sub-nome').value;
 const email = document.getElementById('sub-email').value || 'Non specificata';
 const waNumber = document.getElementById('sub-whatsapp').value;
 
-const testo = Ciao Andrea, desidero iscrivermi alla community del Comune di Quarto e Campi Flegrei.%0A%0A*Nome e Cognome:* ${encodeURIComponent(nome)}%0AEmail:${encodeURIComponent(email)}%0A*WhatsApp:* ${encodeURIComponent(waNumber)}`;
+const testo = `Ciao Andrea, desidero iscrivermi alla community del Comune di Quarto e Campi Flegrei.%0A%0A*Nome e Cognome:* ${encodeURIComponent(nome)}%0AEmail: ${encodeURIComponent(email)}%0A*WhatsApp:* ${encodeURIComponent(waNumber)}`;
 
-const whatsappUrl = https://wa.me/390810669769?text=${testo}`;
+const whatsappUrl = `https://wa.me/390810669769?text=${testo}`;
 
 document.getElementById('subscribe-form').style.display = 'none';
 document.getElementById('subscribe-success').classList.remove('hidden');
@@ -597,13 +595,6 @@ document.getElementById('subscribe-success').classList.remove('hidden');
 setTimeout(() => {
 window.open(whatsappUrl, '_blank');
 }, 800);
-}
-
-// Gestione invio form segnalazioni
-function handleFormSubmit(e) {
-e.preventDefault();
-document.getElementById('segnalazione-form').style.display = 'none';
-document.getElementById('form-success').classList.remove('hidden');
 }
 
 // Gestione sondaggio interattivo
@@ -631,11 +622,3 @@ document.getElementById('poll-voted-msg').classList.remove('hidden');
 </script>
 </body>
 </html>
-<form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="32b01f65-8f60-4f3c-9371-de780f2fc270">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <textarea name="message" required></textarea>
-  <button type="submit">Submit Form</button>
-</form>
-32b01f65-8f60-4f3c-9371-de780f2fc270
